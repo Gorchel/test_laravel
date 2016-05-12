@@ -46,6 +46,9 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ action('OrderController@index') }}">Заказы</a></li>
+                </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->

@@ -19,7 +19,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {	
     	if($request->ajax()){
-    		$orderPaginate = $this->orderFilter($request->input('date-from'),$request->input('date-before'),$request->input('state'),$request->input('phone'),$request->input('goods'),$request->input('good-id'),$request->input('order-count'),$request->input('search'));
+    		$orderPaginate = $this->orderFilter($request->input('date-from'),$request->input('date-before'),$request->input('state'),$request->input('phone'),$request->input('goods'),$request->input('good-id'),$request->input('order-count'),$request->input('search'),$request->input('sort'));
     		return view('orders._table',['orderPaginate' => $orderPaginate]);
     	}else{
     		$stateList = State::all();
@@ -31,10 +31,11 @@ class OrderController extends Controller
     	}
     }
 
-    public function orderFilter($dateFrom, $dateBefore, $state, $phone, $good, $goodId, $rowCount, $search){
+    public function orderFilter($dateFrom, $dateBefore, $state, $phone, $good, $goodId, $rowCount, $search, $sort){
 
     	$dateBetween = [$dateFrom, $dateBefore];
     	$orderListFilter = Order::query();
+
     	$orderListFilter->whereBetween('order_add_time',$dateBetween);
 
     	if ($state != 0){
@@ -80,6 +81,10 @@ class OrderController extends Controller
 					    			$query->whereDate('order_add_time','=',date('Y-m-d',$dateSearch));
 					    		}
 							});			
+    	}
+
+    	if ($sort){
+    		$orderListFilter->orderBy($sort, 'asc');
     	}
 
     	return $orderListFilter->paginate($rowCount);

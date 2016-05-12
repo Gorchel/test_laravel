@@ -1,12 +1,12 @@
 <table class="table table-bordered" id="order-content-table">
   	<thead>
       <tr>
-        <th>#<i class="fa fa-arrows-v pull-right order-sort" data-id="id"></i></th>
+        <th>#<i class="fa fa-arrows-v pull-right order-sort" data-id="order_id"></i></th>
         <th>Дата<i class="fa fa-arrows-v pull-right order-sort" data-id="order_add_time"></i></th>
         <th>Клиент<i class="fa fa-arrows-v pull-right order-sort" data-id="order_client_name"></i></th>
         <th>Телефон<i class="fa fa-arrows-v pull-right order-sort" data-id="order_client_phone"></i></th>
-        <th>Товар<i class="fa fa-arrows-v pull-right order-sort" data-id="good"></i></th>
-        <th>Статус<i class="fa fa-arrows-v pull-right order-sort" data-id="state"></i></th>
+        <th>Товар<i class="fa fa-arrows-v pull-right order-sort" data-id="order_good"></i></th>
+        <th>Статус<i class="fa fa-arrows-v pull-right order-sort" data-id="order_state"></i></th>
       </tr>
     </thead>
     <tbody>
@@ -16,7 +16,14 @@
 				<td>{{ date('Y-m-d', strtotime($order->order_add_time)) }}</td>
 				<td>{{ $order->order_client_name }}</td>
 				<td>{{ $order->order_client_phone }}</td>
-				<td>{{ $order->good->good_name }}</td>
+				<td>
+					<p>{{ $order->good->good_name }}</p>
+					<p>
+						{{ $order->good->advert->user_first_name }}
+						{{ $order->good->advert->user_last_name }}
+						( {{ $order->good->advert->user_login }} )
+					</p>
+				</td>
 				<td>{{ $order->state->state_name }}</td>
 			</tr>
 		@endforeach
