@@ -1,18 +1,19 @@
 <table class="table table-bordered" id="order-content-table">
   	<thead>
       <tr>
-        <th>#<i class="fa fa-arrows-v pull-right order-sort" data-id="order_id"></i></th>
-        <th>Дата<i class="fa fa-arrows-v pull-right order-sort" data-id="order_add_time"></i></th>
-        <th>Клиент<i class="fa fa-arrows-v pull-right order-sort" data-id="order_client_name"></i></th>
-        <th>Телефон<i class="fa fa-arrows-v pull-right order-sort" data-id="order_client_phone"></i></th>
-        <th>Товар<i class="fa fa-arrows-v pull-right order-sort" data-id="order_good"></i></th>
-        <th>Статус<i class="fa fa-arrows-v pull-right order-sort" data-id="order_state"></i></th>
+        <th>#<i class="fa fa-arrows-v pull-right sort order-sort" data-id="order_id"></i></th>
+        <th>Дата<i class="fa fa-arrows-v pull-right sort order-sort" data-id="order_add_time"></i></th>
+        <th>Клиент<i class="fa fa-arrows-v pull-right sort order-sort" data-id="order_client_name"></i></th>
+        <th>Телефон<i class="fa fa-arrows-v pull-right sort order-sort" data-id="order_client_phone"></i></th>
+        <th>Товар<i class="fa fa-arrows-v pull-right sort order-sort" data-id="order_good"></i></th>
+        <th>Статус<i class="fa fa-arrows-v pull-right sort order-sort" data-id="order_state"></i></th>
       </tr>
     </thead>
     <tbody>
+    	<?php $num = 1?>
 		@foreach ($orderPaginate as $order)
 			<tr>
-				<td>{{ $order->order_id }}</td>
+				<td><?php echo $num++ ?></td>
 				<td>{{ date('Y-m-d', strtotime($order->order_add_time)) }}</td>
 				<td>{{ $order->order_client_name }}</td>
 				<td>{{ $order->order_client_phone }}</td>

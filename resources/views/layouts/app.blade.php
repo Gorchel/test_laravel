@@ -48,6 +48,7 @@
                 
                 <ul class="nav navbar-nav">
                     <li><a href="{{ action('OrderController@index') }}">Заказы</a></li>
+                    <li><a href="{{ action('GoodController@index') }}">Товары</a></li>
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

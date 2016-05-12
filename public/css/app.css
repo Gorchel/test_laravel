@@ -6,11 +6,11 @@ body {
     margin-right: 6px;
 }	
 
-#order-filter-submit {
+.btn {
 	margin-top: 25px;
 }
 
-#order-content-table thead i {
+.sort {
 	padding-top: 4px;
     opacity: 0.6;
     cursor: pointer;
