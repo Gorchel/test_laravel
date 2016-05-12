@@ -1,3 +1,5 @@
+var page_count = 1;
+
 jQuery( document ).ready(function() {
 	$('body').on('click','.good-sort',function(){
     	var sort = $(this).data('id');
@@ -14,15 +16,23 @@ jQuery( document ).ready(function() {
 		});
     });
 
-     $('body').on('change','#good-row-count',function(){
+	$('body').on('change','#good-row-count',function(){
+		table_update();
+	});
 
-     	$.ajax({
-			type: "GET",
-		  	url: "good",
-		  	data: {'good-count': $(this).val()}
-		}).done(function(data) {
-			$('#good-table-container').html(data);
-		});
-     });
+    $('body').on('click','.pagination a',function(){
+		event.preventDefault();
+		page_count = $(this).text();
+		table_update();
+	})
 });
 
+var table_update = function(){
+	$.ajax({
+		type: "GET",
+	  	url: "good",
+	  	data: 'good-count=' + $('#good-row-count').val() + '&page=' + page_count,
+	}).done(function(data) {
+		$('#good-table-container').html(data);
+	});
+}

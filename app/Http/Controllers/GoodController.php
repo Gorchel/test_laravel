@@ -30,7 +30,6 @@ class GoodController extends Controller
     		$goodPaginate = $paginateQuery->paginate($request->input('good-count'));
     		return view('goods._table',['goodPaginate' => $goodPaginate]);
     	}else{
-
 	    	$goodPaginate = Good::paginate(1);
 	    	return view('goods.index',['goodPaginate' => $goodPaginate]);
     	}

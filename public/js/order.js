@@ -1,3 +1,5 @@
+var page_count = 1;
+
 jQuery( document ).ready(function() {
     $('body').on('click','.order-sort',function(){
     	var sort = $(this).data('id');
@@ -12,12 +14,22 @@ jQuery( document ).ready(function() {
     });
 
      $('body').on('click','#order-filter-submit',function(){
-     	$.ajax({
+     	table_update();
+     });
+
+     $('body').on('click','.pagination a',function(){
+		event.preventDefault();
+		page_count = $(this).text();
+		table_update();
+	})
+});
+
+var table_update = function(){
+	$.ajax({
 			type: "GET",
 		  	url: "order",
-		  	data: 'sort=&' + $('#order-filter-form').serialize()
+		  	data: 'sort=&' + $('#order-filter-form').serialize() + '&page=' + page_count,
 		}).done(function(data) {
 			$('#order-table-container').html(data);
 		});
-     });
-});
+}
