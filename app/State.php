@@ -10,6 +10,6 @@ class State extends Model
 
     public function order()
     {
-        return $this->belongsTo('App\Order','order_state');
+        return $this->hasOne('App\Order','order_state');
     }
 }

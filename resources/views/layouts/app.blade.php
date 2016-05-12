@@ -13,7 +13,16 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/app.css') }}">
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    @yield('javascript')
+
+
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+
 </head>
 
 <body id="app-layout">
@@ -36,7 +45,7 @@
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-
+                
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->

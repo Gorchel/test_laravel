@@ -15,6 +15,6 @@ class Good extends Model
 
     public function order()
     {
-        return $this->belongsTo('App\Order','order_good');
+        return $this->hasOne('App\Order','order_good');
     }
 }

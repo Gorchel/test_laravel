@@ -1,0 +1,17 @@
+body {
+    font-family: 'Lato';
+}
+
+.fa-btn {
+    margin-right: 6px;
+}	
+
+#order-filter-submit {
+	margin-top: 25px;
+}
+
+#order-content-table thead i {
+	padding-top: 4px;
+    opacity: 0.6;
+    cursor: pointer;
+}
